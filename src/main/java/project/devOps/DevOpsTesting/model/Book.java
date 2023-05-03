@@ -1,26 +1,29 @@
 package project.devOps.DevOpsTesting.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
+@Table(name = "books")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Book {
     @Id
-    private String barcode;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long bookID;
+    @Column(nullable = false)
+    private String isbn;
+    @Column(nullable = false)
+    private String title;
+    @Column(nullable = false)
     private String author;
-    private double price;
-    private int quantity;
-
-    public Book(String barcode, String name, String author, double price, int quantity) {
-        this.barcode = barcode;
-        this.name = name;
-        this.author = author;
-        this.setPrice(price);
-        this.quantity = quantity;
-    }
+    @Column
+    private boolean available;
+    @OneToMany(mappedBy = "book")
+    private List<Borrow> borrows;
 }

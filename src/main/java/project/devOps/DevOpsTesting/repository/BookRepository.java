@@ -1,7 +1,10 @@
 package project.devOps.DevOpsTesting.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import project.devOps.DevOpsTesting.model.Book;
 
-public interface BookRepository extends CrudRepository<Book, Integer> {
+import java.util.List;
+
+public interface BookRepository extends JpaRepository<Book, Long> {
+    List<Book> findByAvailableTrue();
 }

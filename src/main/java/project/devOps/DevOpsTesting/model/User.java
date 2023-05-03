@@ -1,27 +1,34 @@
 package project.devOps.DevOpsTesting.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 @Getter
 @Setter
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int UserID;
+    private Long UserID;
+    @Column(nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column
     private String address;
+    @Column
     private Long phone;
+    @Column
     private String emailId;
     private List<UserRole> roles;
+    @OneToMany(mappedBy = "borrower")
+    private List<Borrow> borrows;
 }
