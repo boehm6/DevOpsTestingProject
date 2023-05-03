@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ausleihen eines Buchs</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Ausleihen eines Buchs</h1>
+
+<form action="/borrow" method="post" th:object="${borrow}">
+  <label for="bookId">Buch:</label>
+  <select id="bookId" name="bookId">
+    <option value="" disabled>Wähle ein Buch aus</option>
+    <th:block th:each="book : ${books}">
+      <option th:value="${book.bookID}" th:text="${book.title}"></option>
+    </th:block>
+  </select>
+  <br><br>
+  <label for="startDate">Ausleihbeginn</label>
+  <input type="date" id="startDate" name="start" th:field="*{startDate}">
+  <label for="endDate">Ausleihende</label>
+  <input type="date" id="endDate" name="end" th:field="*{endDate}">
+  <button type="submit">Ausleihen</button>
+</form>
+
+<a href="/">Zurück zur Startseite</a>
+</body>
+</html>

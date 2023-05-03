@@ -15,7 +15,7 @@ import project.devOps.DevOpsTesting.service.impl.UserServiceImpl;
 import java.util.List;
 
 @Controller
-public class BookController {
+public class IndexController {
 
     @Autowired
     private UserServiceImpl userService;
@@ -45,13 +45,15 @@ public class BookController {
     @GetMapping("/borrow")
     public String showBorrowForm(Model model) {
         List<Book> books = bookService.getAllBooks();
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("user", users);
         model.addAttribute("books", books);
         model.addAttribute("borrow", new Borrow());
         return "borrow";
     }
 
     @PostMapping("/borrow")
-    public String borrowBook(@ModelAttribute("borrow") Borrow borrow, Model model) {
+    public String borrowBook(@ModelAttribute("borrow") Borrow borrow) {
         bookService.borrowBook(borrow);
         return "redirect:/";
     }

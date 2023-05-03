@@ -27,8 +27,8 @@ public class User {
     @Column
     private Long phone;
     @Column
-    private String emailId;
-    private List<UserRole> roles;
+    private String email;
+    private UserRole roles;
     @OneToMany(mappedBy = "borrower")
     private List<Borrow> borrows;
 }
