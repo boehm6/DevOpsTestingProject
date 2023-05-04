@@ -1,16 +1,12 @@
 package project.devOps.DevOpsTesting.controller;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import project.devOps.DevOpsTesting.model.Book;
-import project.devOps.DevOpsTesting.model.Borrow;
-import project.devOps.DevOpsTesting.model.User;
 import project.devOps.DevOpsTesting.service.impl.BookServiceImpl;
 import project.devOps.DevOpsTesting.service.impl.UserServiceImpl;
 
