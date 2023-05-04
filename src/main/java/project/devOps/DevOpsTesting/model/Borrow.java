@@ -35,8 +35,8 @@ public class Borrow {
    * @return String des Start und Endes der Ausleihe.
    */
   public String getDate() {
-    return startDate.format(DateTimeFormatter.ISO_DATE)
-        + " "
-        + endDate.format(DateTimeFormatter.ISO_DATE);
+    return startDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+        + " bis "
+        + endDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
   }
 }

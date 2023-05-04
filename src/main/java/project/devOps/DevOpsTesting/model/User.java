@@ -25,7 +25,7 @@ public class User {
     @Column
     private String address;
     @Column
-    private Long phone;
+    private int phone;
     @Column
     private String email;
     private UserRole roles;

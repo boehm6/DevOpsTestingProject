@@ -11,26 +11,25 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
-    @Override
-    public Optional<User> getUserById(long id) {
-        return userRepository.findById(id);
-    }
+  @Override
+  public Optional<User> getUserById(long id) {
+    return userRepository.findById(id);
+  }
 
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+  @Override
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
+  }
 
-    @Override
-    public void createUser(User user) {
-        userRepository.save(user);
-    }
+  @Override
+  public void createUser(User user) {
+    userRepository.save(user);
+  }
 
-    @Override
-    public void deleteUser(User user) {
-        userRepository.delete(user);
-    }
+  @Override
+  public void deleteUser(User user) {
+    userRepository.delete(user);
+  }
 }
