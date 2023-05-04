@@ -13,22 +13,37 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+  @Autowired private BookRepository bookRepository;
 
-    @Autowired
-    private BorrowRepository borrowRepository;
+  @Autowired private BorrowRepository borrowRepository;
 
-    @Override
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+  @Override
+  public List<Book> getAllBooks() {
+    return bookRepository.findAll();
+  }
+
+  @Override
+  public void borrowBook(Borrow borrow) {
+    borrowRepository.save(borrow);
+    Book book =
+        bookRepository
+            .findById(borrow.getBookId())
+            .orElseThrow(() -> new RuntimeException("Book not found"));
+    book.setAvailable(false);
+    bookRepository.save(book);
+  }
+
+  @Override
+  public Book getBookById(Long bookId) {
+    // Schleife über alle Bücher in der Liste
+    List<Book> bookList = getAllBooks();
+    for (Book book : bookList) {
+      // Wenn die ID des Buchs mit der gesuchten ID übereinstimmt, gibt das Buch zurück
+      if (book.getBookID().equals(bookId)) {
+        return book;
+      }
     }
-
-    @Override
-    public void borrowBook(Borrow borrow) {
-        borrowRepository.save(borrow);
-        Book book = bookRepository.findById(borrow.getBookId()).orElseThrow(() -> new RuntimeException("Book not found"));
-        book.setAvailable(false);
-        bookRepository.save(book);
-    }
+    // Wenn kein passendes Buch gefunden wurde, gib null zurück
+    return null;
+  }
 }
