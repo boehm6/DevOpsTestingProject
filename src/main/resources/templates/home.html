@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ausleihhomepage</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+
 </head>
 <body>
 <h1>Ausleihhomepage für die Bücher der WG</h1>
@@ -26,8 +28,18 @@
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.isbn}"></td>
-            <td th:text="${book.available}"></td>
-            <td th:text="${book.borrows}"></td>
+            <td>
+                <span th:if="${book.available}">verfügbar</span>
+                <span th:unless="${book.available}">ausgeliehen</span>
+            </td>
+
+            <td>
+                <ul>
+                    <th:block th:each="borrow : ${book.borrows}">
+                        <li th:text="${borrow.getDate()}"></li>
+                    </th:block>
+                </ul>
+            </td>
         </tr>
     </th:block>
     </tbody>
@@ -37,3 +49,4 @@
 <a href="/borrow">Borrow a Book</a>
 </body>
 </html>
+
