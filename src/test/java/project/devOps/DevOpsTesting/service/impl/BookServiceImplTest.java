@@ -1,4 +1,4 @@
-package project.devOps.DevOpsTesting.service;
+package project.devOps.DevOpsTesting.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -16,7 +16,6 @@ import project.devOps.DevOpsTesting.model.Book;
 import project.devOps.DevOpsTesting.model.Borrow;
 import project.devOps.DevOpsTesting.repository.BookRepository;
 import project.devOps.DevOpsTesting.repository.BorrowRepository;
-import project.devOps.DevOpsTesting.service.impl.BookServiceImpl;
 
 public class BookServiceImplTest {
 
@@ -46,13 +45,7 @@ public class BookServiceImplTest {
         assertEquals(expectedBooks.size(), actualBooks.size());
     }
 
-    private Book createBook(long bookId) {
-        Book book = new Book();
-        book.setBookID(bookId);
-        book.setTitle("Test");
-        book.setIsbn("978-456-321");
-        return book;
-    }
+
 
     @Test
     public void testBorrowBook() {
@@ -95,5 +88,12 @@ public class BookServiceImplTest {
 
         // Verification
         assertNull(actualBook);
+    }
+    private Book createBook(long bookId) {
+        Book book = new Book();
+        book.setBookID(bookId);
+        book.setTitle("Test");
+        book.setIsbn("978-456-321");
+        return book;
     }
 }
