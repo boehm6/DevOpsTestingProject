@@ -1,3 +1,6 @@
+/*
+ Borrows bisher nicht integriert, da User keine besondere Rolle haben
+ */
 INSERT INTO borrows (borrowID, start_Date, end_Date)
 VALUES (1L, '2023-04-20', '2023-05-20');
 

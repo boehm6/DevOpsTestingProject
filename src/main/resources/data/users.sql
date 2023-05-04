@@ -1,3 +1,7 @@
+/*
+ Users bisher nicht integriert, da User keine besondere Rolle haben
+ */
+
 INSERT INTO users (userid, username, password, first_Name, last_Name, address, phone, email, roles)
 VALUES (1L, 'testuser', 'password123', 'Max', 'Mustermann', 'Musterstr. 1', '0123456789', 'testuser@example.com', 2);
 
