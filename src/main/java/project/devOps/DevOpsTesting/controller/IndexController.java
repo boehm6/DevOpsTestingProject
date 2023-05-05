@@ -15,9 +15,14 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-  @Autowired private UserServiceImpl userService;
+  private final UserServiceImpl userService;
 
-  @Autowired private BookServiceImpl bookService;
+  private final BookServiceImpl bookService;
+
+  public IndexController(BookServiceImpl bookService, UserServiceImpl userService) {
+    this.bookService = bookService;
+    this.userService = userService;
+  }
 
   @GetMapping("/")
   public String home(Model model) {

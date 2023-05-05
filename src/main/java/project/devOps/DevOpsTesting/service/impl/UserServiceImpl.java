@@ -1,6 +1,5 @@
 package project.devOps.DevOpsTesting.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.devOps.DevOpsTesting.model.User;
 import project.devOps.DevOpsTesting.repository.UserRepository;
@@ -11,7 +10,11 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
-  @Autowired private UserRepository userRepository;
+private final UserRepository userRepository;
+
+  public UserServiceImpl(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
   @Override
   public Optional<User> getUserById(long id) {

@@ -22,7 +22,7 @@ public class UserTest {
         user.setFirstName("Test");
         user.setLastName("User");
         user.setAddress("123 Test Street");
-        user.setPhone(1234567890);
+        user.setPhone("1234567890");
         user.setEmail("testuser@example.com");
         user.setRoles(UserRole.BEWOHNER);
 
@@ -31,7 +31,7 @@ public class UserTest {
         Assertions.assertEquals("Test", user.getFirstName());
         Assertions.assertEquals("User", user.getLastName());
         Assertions.assertEquals("123 Test Street", user.getAddress());
-        Assertions.assertEquals(1234567890L, user.getPhone());
+        Assertions.assertEquals("1234567890", user.getPhone());
         Assertions.assertEquals("testuser@example.com", user.getEmail());
         Assertions.assertEquals(UserRole.BEWOHNER, user.getRoles());
     }
