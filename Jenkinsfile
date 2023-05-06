@@ -1,15 +1,15 @@
 pipeline {
-         agent any
-         stages {
-                 stage('Build') {
-                 steps {
-                     echo 'Hi, GeekFlare. Starting to build the App.'
-                 }
-                 }
-                 stage('Test') {
-                 steps {
-                    input('Do you want to proceed?')
-                 }
-                 }
-}
+   agent any
+   stages {
+       stage('Build') {
+           steps {
+               sh 'mvn clean package'
+           }
+       }
+       stage('Run') {
+           steps {
+               sh 'java -jar target/my-spring-boot-app.jar'
+           }
+       }
+   }
 }
