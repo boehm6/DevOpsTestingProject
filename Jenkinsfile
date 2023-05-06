@@ -1,10 +1,15 @@
 pipeline {
-    agent { docker { image 'maven:3.9.0-eclipse-temurin-11' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
-    }
+         agent any
+         stages {
+                 stage('Build') {
+                 steps {
+                     echo 'Hi, GeekFlare. Starting to build the App.'
+                 }
+                 }
+                 stage('Test') {
+                 steps {
+                    input('Do you want to proceed?')
+                 }
+                 }
+}
 }
