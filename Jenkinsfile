@@ -13,10 +13,18 @@ pipeline {
                bat 'mvnw clean install'
            }
        }
-       stage('Test'){
+       stage('Test Stage'){
+        stage('JUnittest'){
             steps{
-                bat 'mvnw test'
+               bat 'mvnw test'
             }
+        }
+        stage('Integrationtest'){
+             steps{
+                bat 'mvnw verify -Psurefire'
+            }
+        }
+
        }
        stage('Deploy') {
            steps {
