@@ -16,7 +16,6 @@ pipeline {
        stage('Test'){
             steps{
                 bat 'mvnw test'
-                junit 'reports/**/*.xml'
             }
        }
        stage('Deploy') {
