@@ -14,17 +14,18 @@ pipeline {
            }
        }
        stage('Test Stage'){
-        stage('JUnittest'){
-            steps{
-               bat 'mvnw test'
+        stages{
+            stage('JUnittest'){
+                 steps{
+                    bat 'mvnw test'
+                 }
+            }
+            stage('Integrationtest'){
+                 steps{
+                     bat 'mvnw verify -Psurefire'
+                 }
             }
         }
-        stage('Integrationtest'){
-             steps{
-                bat 'mvnw verify -Psurefire'
-            }
-        }
-
        }
        stage('Deploy') {
            steps {
