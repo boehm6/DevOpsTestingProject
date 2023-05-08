@@ -10,7 +10,7 @@ pipeline {
    stages {
        stage('Build') {
            steps {
-               bat 'mvnw clean package'
+               bat 'mvnw clean install'
            }
        }
        stage('Test'){
