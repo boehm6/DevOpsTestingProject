@@ -16,11 +16,12 @@ pipeline {
        stage('Test'){
             steps{
                 bat 'mvnw test'
+                junit 'reports/**/*.xml'
             }
        }
-       stage('Run') {
+       stage('Deploy') {
            steps {
-               bat 'java -jar target/DevOpsTesting.jar'
+               bat 'java -jar target/*.jar'
            }
        }
    }
