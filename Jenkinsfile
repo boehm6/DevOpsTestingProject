@@ -1,14 +1,27 @@
 pipeline {
    agent any
+   tools{
+   jdk17
+   }
+
+   triggers{
+   pollSCM('*****')
+   }
+
    stages {
        stage('Build') {
            steps {
-               sh 'mvn clean package'
+               sh 'mvnw clean package'
            }
+       }
+       stage('Test'){
+            steps{
+                sh 'mvnw test'
+            }
        }
        stage('Run') {
            steps {
-               sh 'java -jar target/my-spring-boot-app.jar'
+               sh 'java -jar target/DevOpsTesting.jar'
            }
        }
    }
