@@ -32,4 +32,10 @@ public class IndexControllerIntegrationTest {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity("/borrow", String.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
+
+    @Test
+    public void testShowBookForm() {
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("/book", String.class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+    }
 }

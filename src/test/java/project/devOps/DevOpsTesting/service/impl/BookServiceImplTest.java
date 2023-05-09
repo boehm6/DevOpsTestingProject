@@ -1,8 +1,7 @@
 package project.devOps.DevOpsTesting.service.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.devOps.DevOpsTesting.model.Book;
 import project.devOps.DevOpsTesting.model.Borrow;
+import project.devOps.DevOpsTesting.model.User;
 import project.devOps.DevOpsTesting.repository.BookRepository;
 import project.devOps.DevOpsTesting.repository.BorrowRepository;
 
@@ -85,11 +85,19 @@ public class BookServiceImplTest {
     assertNull(actualBook);
   }
 
+  @Test
+  void testCreateBook() {
+    Book book = createBook(1L);
+    bookService.createBook(book);
+    verify(bookRepository).save(book);
+  }
+
   private Book createBook(long bookId) {
     Book book = new Book();
     book.setBookID(bookId);
     book.setTitle("Test");
     book.setIsbn("978-456-321");
+    book.setAvailable(false);
     return book;
   }
 }
