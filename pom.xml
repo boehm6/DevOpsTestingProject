@@ -93,7 +93,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>integration-test</id>
+                        <id>integration</id>
                         <goals>
                             <goal>test</goal>
                         </goals>

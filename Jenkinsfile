@@ -22,7 +22,7 @@ pipeline {
             }
             stage('Integrationtest'){
                  steps{
-                     bat './mvnw verify -Psurefire'
+                     bat './mvnw verify -Pintegration'
                  }
             }
         }
