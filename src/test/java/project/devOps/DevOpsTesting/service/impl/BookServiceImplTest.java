@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import project.devOps.DevOpsTesting.model.Book;
 import project.devOps.DevOpsTesting.model.Borrow;
-import project.devOps.DevOpsTesting.model.User;
 import project.devOps.DevOpsTesting.repository.BookRepository;
 import project.devOps.DevOpsTesting.repository.BorrowRepository;
 
