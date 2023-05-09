@@ -44,6 +44,15 @@ pipeline {
                    skipPublishingChecks: false,
                    checksName: "Tests"
                )
+
+               jacoco(
+                   execPattern: "target/jacoco.exec",
+                   classPattern: "target/classes/project",
+
+                   sourcePattern: "**/src/main/java",
+                   sourceInclusionPattern: "**/*.java"
+               )
+
            }
            success {
                echo "I will be executed if the build is success"
