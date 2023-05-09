@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/templates/static/style.css">
+    <title>Neuen Hausbewohner anlegen</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>Login</h1>
+<a href="/"><button>Zurück zur Startseite</button></a>
+<h1>Neuen Hausbewohner anlegen</h1>
 
 <form action="/register" method="post" th:object="${user}">
     <label for="username">Benutzername:</label>
@@ -33,7 +34,5 @@
     <br>
     <button type="submit">Anmelden</button>
 </form>
-
-<a href="/">Zurück zur Startseite</a>
 </body>
 </html>

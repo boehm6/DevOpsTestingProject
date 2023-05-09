@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="static/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ausleihhomepage</title>
-
-
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
 <h1>Ausleihhomepage für die Bücher der WG</h1>
-
 <h2>Buchliste</h2>
 <table>
     <thead>
@@ -44,9 +41,8 @@
     </th:block>
     </tbody>
 </table>
-
-<a href="/register">Register</a>
-<a href="/borrow">Borrow a Book</a>
+<a href="/register"><button>Bewohner anlegen</button></a>
+<a href="/borrow"><button>Buch ausleihen</button></a>
 </body>
 </html>
 
