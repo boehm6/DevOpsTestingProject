@@ -10,19 +10,19 @@ pipeline {
    stages {
        stage('Build') {
            steps {
-               bat 'mvnw clean install'
+               bat './mvnw clean install'
            }
        }
        stage('Test Stage'){
         stages{
             stage('JUnittest'){
                  steps{
-                    bat 'mvnw test'
+                    bat './mvnw test'
                  }
             }
             stage('Integrationtest'){
                  steps{
-                     bat 'mvnw verify -Psurefire'
+                     bat './mvnw verify -Psurefire'
                  }
             }
         }
