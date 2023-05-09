@@ -10,13 +10,22 @@ pipeline {
    stages {
        stage('Build') {
            steps {
-               bat 'mvnw clean package'
+               bat './mvnw clean install'
            }
        }
-       stage('Test'){
-            steps{
-                bat 'mvnw test'
+       stage('Test Stage'){
+        stages{
+            stage('JUnittest'){
+                 steps{
+                    bat './mvnw test'
+                 }
             }
+            stage('Integrationtest'){
+                 steps{
+                     bat './mvnw verify -Psurefire'
+                 }
+            }
+        }
        }
        stage('Deploy') {
            steps {
@@ -27,7 +36,23 @@ pipeline {
 
    post {
            always {
-               echo "I will always get executed"
+               junit(
+                   testResults: "target/surefire-reports/TEST-*.xml",
+                   keepLongStdio: false,
+                   healthScaleFactor: 1.0,
+                   allowEmptyResults: false,
+                   skipPublishingChecks: false,
+                   checksName: "Tests"
+               )
+
+               jacoco(
+                   execPattern: "target/jacoco.exec",
+                   classPattern: "target/classes/project",
+
+                   sourcePattern: "**/src/main/java",
+                   sourceInclusionPattern: "**/*.java"
+               )
+
            }
            success {
                echo "I will be executed if the build is success"
