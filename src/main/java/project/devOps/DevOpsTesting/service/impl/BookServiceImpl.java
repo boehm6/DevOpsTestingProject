@@ -53,4 +53,9 @@ public class BookServiceImpl implements BookService {
     // Wenn kein passendes Buch gefunden wurde, gib null zurück
     return null;
   }
+
+  @Override
+  public void createBook(Book book) {
+    bookRepository.save(book);
+  }
 }
