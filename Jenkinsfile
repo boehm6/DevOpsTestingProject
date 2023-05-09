@@ -33,4 +33,26 @@ pipeline {
            }
        }
    }
+
+   post {
+           always {
+               junit(
+                   testResults: "target/surefire-reports/TEST-*.xml",
+                   keepLongStdio: false,
+                   healthScaleFactor: 1.0,
+                   allowEmptyResults: false,
+                   skipPublishingChecks: false,
+                   checksName: "Tests"
+               )
+           }
+           success {
+               echo "I will be executed if the build is success"
+           }
+           failure {
+               echo "I will be executed if the build fails"
+           }
+           unstable {
+               echo "I will be executed if the build is unstable"
+           }
+       }
 }
