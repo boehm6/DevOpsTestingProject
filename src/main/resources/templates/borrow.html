@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ausleihen eines Buchs</title>
-  <link rel="stylesheet" href="/templates/static/style.css">
+  <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
+<a href="/"><button>Zurück zur Startseite</button></a>
 <h1>Ausleihen eines Buchs</h1>
 
 <form action="/borrow" method="post" th:object="${borrow}">
@@ -24,7 +25,5 @@
   <input type="date" id="endDate" name="endDate" th:field="*{endDate}">
   <button type="submit">Ausleihen</button>
 </form>
-
-<a href="/">Zurück zur Startseite</a>
 </body>
 </html>

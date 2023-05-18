@@ -43,6 +43,19 @@ public class IndexController {
     return "redirect:/";
   }
 
+  @GetMapping("/book")
+  public String showBookForm(Model model) {
+    model.addAttribute("book", new Book());
+    return "book";
+  }
+
+  @PostMapping("/book")
+  public String saveBook(@ModelAttribute("book") Book book, Model model) {
+    book.setAvailable(true);
+    bookService.createBook(book);
+    return "redirect:/";
+  }
+
   @GetMapping("/borrow")
   public String showBorrowForm(Model model) {
     List<Book> books = bookService.getAllBooks();

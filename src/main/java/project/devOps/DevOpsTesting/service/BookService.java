@@ -11,4 +11,6 @@ public interface BookService {
   void borrowBook(Borrow borrow);
 
   Book getBookById(Long bookId);
+
+  void createBook(Book book);
 }
